@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/Eva3/static/css/main.aed6b53a.css",
+    "main.js": "/Eva3/static/js/main.a69ce22b.js",
+    "static/js/453.27146c67.chunk.js": "/Eva3/static/js/453.27146c67.chunk.js",
+    "static/media/categoria-figuras.jpg": "/Eva3/static/media/categoria-figuras.ccbf985ffe9b355eff86.jpg",
+    "index.html": "/Eva3/index.html",
+    "static/media/image2.avif": "/Eva3/static/media/image2.03bb917df602bbdd5f77.avif",
+    "main.aed6b53a.css.map": "/Eva3/static/css/main.aed6b53a.css.map",
+    "main.a69ce22b.js.map": "/Eva3/static/js/main.a69ce22b.js.map",
+    "453.27146c67.chunk.js.map": "/Eva3/static/js/453.27146c67.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aed6b53a.css",
+    "static/js/main.a69ce22b.js"
+  ]
+}

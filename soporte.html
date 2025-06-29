@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SoloWaifu - Formulario de Reclamos</title>
+  <link rel="stylesheet" href="stylesoporte.css" />
+</head>
+<body>
+  <header class="Header">
+    <nav>
+      <div class="Tres-Rayas" tabindex="0" aria-label="Contacto">
+        <svg  class="icono" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" stroke="currentColor"
+          stroke-linecap="round" stroke-linejoin="round" stroke-width="2" role="img" viewBox="0 0 24 15">
+          <title>Contacto</title>
+          <path d="M3 12h18M3 6h18M3 18h18"></path>
+        </svg>
+        <div class="Cuadro-Informacion" role="tooltip">
+          <h4>Conéctate o contactate con nosotros</h4>
+          <p>Síguenos en Twitter para más actualizaciones.</p>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" style="color: white;">@SoloWaifu</a>
+        </div>
+        </div>
+      
+
+      <a href="index.html">Menu</a>
+      <a href="producto.html">Producto</a>
+      <a href="soporte.html">Soporte</a>
+    </nav>
+  </header>
+
+  <div class="Contenedor">
+    <main>
+      <div class="M_logo">
+        <img class="Logo" src="image.jpg" alt="Logo" width="400" height="400" />
+      </div>
+      
+      <div class="Solicitud">
+        <h2>Formulario de reclamos</h2>
+        <p class="Texto">Déjanos tus reclamos o sugerencias para realizar una mejor atención.</p>
+      
+      <form id="formulario" novalidate>
+        <div class="Fila">
+          <div class="Columna">
+            <label for="firstName">Nombre *</label>
+            <input type="text" id="firstName" required />
+          </div>
+
+          <div class="Columna">
+            <label for="lastName">Apellido *</label>
+            <input type="text" id="lastName" required />
+          </div>
+
+          <div class="Columna">
+            <label for="address">País *</label>
+            <input type="text" id="address" required />
+          </div>
+
+          <div class="Columna">
+            <label for="City">Ciudad *</label>
+            <input type="text" id="City" required />
+          </div>
+
+          <div class="Columna">
+            <label for="email">Email <span class="text-muted">(Opcional)</span></label>
+            <input type="email" id="email" placeholder="you@example.com" />
+          </div>
+
+          <div class="Columna">
+            <label for="Motivo">Motivo *</label>
+            <input type="text" id="Motivo" required />
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="Check">
+          <input type="checkbox" id="same-address" required />
+          <label for="same-address">Confirmo que la información proporcionada en este reclamo es veraz y refleja correctamente mi experiencia.</label>
+        </div>
+
+        <div class="Check">
+          <input type="checkbox" id="save-info" required />
+          <label for="save-info">Autorizo el uso de mis datos personales para procesar esta solicitud.</label>
+        </div>
+
+        <hr />
+
+        <button class="Boton-Enviar" type="submit">ENVIAR</button>
+      </form>
+      </div>
+      <div class="Tabla">
+      <h3 class="N_tabla">Datos ingresados</h3>
+      <table class="D_tabla" border="1" width="100%" style="border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>País</th>
+            <th>Ciudad</th>
+            <th>Email</th>
+            <th>Motivo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="tablaBody"></tbody>
+      </table>
+      </div>
+    </main>
+  </div>
+  <footer>
+      <div>
+        <p>
+          <a href="#">Volver Arriba</a>
+        </p>
+        <p>© 2025 TIENDA SOLOWAIFU. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("formulario");
+      const tablaBody = document.getElementById("tablaBody");
+
+      function cargarDatos() {
+        const datos = JSON.parse(localStorage.getItem("reclamos")) || [];
+        tablaBody.innerHTML = "";
+        datos.forEach((dato, index) => {
+          const fila = document.createElement("tr");
+
+          Object.values(dato).forEach(valor => {
+            const celda = document.createElement("td");
+            celda.textContent = valor;
+            fila.appendChild(celda);
+          });
+
+          const celdaAcciones = document.createElement("td");
+
+          const btnEditar = document.createElement("button");
+          btnEditar.textContent = "Editar";
+          btnEditar.type = "button";
+
+          btnEditar.addEventListener("click", () => {
+            if (btnEditar.textContent === "Editar") {
+              for (let i = 0; i < fila.children.length - 1; i++) {
+                const input = document.createElement("input");
+                input.value = fila.children[i].textContent;
+                fila.children[i].textContent = "";
+                fila.children[i].appendChild(input);
+              }
+              btnEditar.textContent = "Guardar";
+            } else {
+              const datosEditados = JSON.parse(localStorage.getItem("reclamos")) || [];
+              for (let i = 0; i < fila.children.length - 1; i++) {
+                const nuevoValor = fila.children[i].firstChild.value.trim();
+                if (i !== 4 && nuevoValor === "") {
+                  alert("Por favor, no dejes campos obligatorios vacíos.");
+                  return;
+                }
+                fila.children[i].textContent = nuevoValor;
+                datosEditados[index][Object.keys(datosEditados[index])[i]] = nuevoValor;
+              }
+              localStorage.setItem("reclamos", JSON.stringify(datosEditados));
+              btnEditar.textContent = "Editar";
+              cargarDatos();
+            }
+          });
+
+          const btnEliminar = document.createElement("button");
+          btnEliminar.textContent = "Eliminar";
+          btnEliminar.type = "button";
+
+          btnEliminar.addEventListener("click", () => {
+            const datosEliminar = JSON.parse(localStorage.getItem("reclamos")) || [];
+            datosEliminar.splice(index, 1);
+            localStorage.setItem("reclamos", JSON.stringify(datosEliminar));
+            cargarDatos();
+          });
+
+          celdaAcciones.appendChild(btnEditar);
+          celdaAcciones.appendChild(btnEliminar);
+          fila.appendChild(celdaAcciones);
+
+          tablaBody.appendChild(fila);
+        });
+      }
+
+      form.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const nuevoDato = {
+          nombre: form.firstName.value.trim(),
+          apellido: form.lastName.value.trim(),
+          pais: form.address.value.trim(),
+          ciudad: form.City.value.trim(),
+          email: form.email.value.trim(),
+          motivo: form.Motivo.value.trim()
+        };
+
+        // Validaciones básicas
+        if (
+          !nuevoDato.nombre ||
+          !nuevoDato.apellido ||
+          !nuevoDato.pais ||
+          !nuevoDato.ciudad ||
+          !nuevoDato.motivo
+        ) {
+          alert("Por favor completa todos los campos obligatorios.");
+          return;
+        }
+
+        if (
+          form["same-address"].checked === false ||
+          form["save-info"].checked === false
+        ) {
+          alert("Debes confirmar y autorizar el uso de tus datos.");
+          return;
+        }
+
+        // Validar email si se ingresó
+        if (
+          nuevoDato.email &&
+          !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(nuevoDato.email)
+        ) {
+          alert("Por favor ingresa un correo electrónico válido.");
+          return;
+        }
+
+        const datos = JSON.parse(localStorage.getItem("reclamos")) || [];
+        datos.push(nuevoDato);
+        localStorage.setItem("reclamos", JSON.stringify(datos));
+        form.reset();
+        cargarDatos();
+      });
+
+      cargarDatos();
+    });
+  </script>
+</body>
+</html>
