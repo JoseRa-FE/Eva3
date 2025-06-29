@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SoloWaifu</title>
+    <link rel="stylesheet" href="%PUBLIC_URL%/style.css">
+    <script src="PUBLIC_URL/js/script.js"></script>
+  </head>
+  <body>
+    <header class="Header">
+      <nav>
+        <div class="Tres-Rayas" id="root">
+          <a href="" aria-label="Contacto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" role="img" viewBox="0 0 24 15">
+              <title>Contacto</title>
+              <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+          </a>
+          <div class="Cuadro-Informacion">
+            <h4>Conéctate o contactate con nosotros</h4>
+            <p>Síguenos en Twitter para más actualizaciones.</p>
+            <a href="https://twitter.com" target="_blank" style="color: white;">@SoloWaifu</a>
+          </div>
+        </div>
+
+        <a href="index.html">Menu</a>
+        <a href="producto.html">Producto</a>
+        <a href="soporte.html">Soporte</a>
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+
+    <main>
+      <section class="Cuerpo">
+        <h1>Las mejores figuras coleccionables</h1>
+        <p>Tu tienda online de figuras de anime</p>
+        <a href="#" class="Boton">Próximamente</a>
+      </section>
+    </main>
+
+    <script>
+
+      // Obtiene el ícono del producto y el encabezado
+
+      const Contacto = document.querySelector('.Tres-Rayas');
+      const Header = document.querySelector('.Header');
+
+      // Muestra el encabezado cuando el ratón entra en el ícono del producto
+
+      Contacto.addEventListener('mouseenter', function() {
+        Header.classList.add('show');
+      });
+
+      // Oculta el encabezado cuando el ratón sale del área del ícono del producto
+
+      Contacto.addEventListener('mouseleave', function() {
+        Header.classList.remove('show');
+      });
+    </script>
+    <section class="Galeria">
+      <h2>Explora más figuras</h2>
+      <p>Una selección especial para coleccionistas como tú:</p>
+      <div class="Imagenes">
+        <img src="img/figura1.jpg" alt="Figura 1">
+        <img src="img/figura2.jpg" alt="Figura 2">
+        <img src="img/figura3.jpg" alt="Figura 3">
+      </div>
+    </section>
+  </body>
+</html>

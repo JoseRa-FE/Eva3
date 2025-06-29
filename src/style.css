@@ -1,0 +1,175 @@
+/* Estilos globales */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('image2.avif'); 
+  background-size: cover; 
+}
+
+/* Estilos para el encabezado */
+
+.Header {
+  background-color: #121213;
+  position: sticky;
+  top: -100px; /* Encabezado oculto por defecto */
+  z-index: 1000;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: top 0.3s ease;
+}
+
+/* Muestra el encabezado al pasar el ratón */
+
+.Header.show {
+  top: 0; 
+}
+
+.Header nav a {
+  text-decoration: none;
+  color: #fdfbfb;
+  padding: 0.5rem;
+  font-size: 16px;
+}
+
+.Header nav a:hover {
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+/* Estilos para el ícono de contacto */
+
+.Tres-Rayas {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* Estilos para la barra de navegación */
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #333;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+/* Estilos para el cuadro de información */
+
+.Cuadro-Informacion {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 100%;
+   background-color: rgba(15, 14, 14, 0.601);
+  color: white;
+  padding: 0rem;
+  text-align: center;
+  width: 100vw;  
+  box-sizing: border-box;  
+  z-index: 1001;
+}
+
+.Tres-Rayas:hover .Cuadro-Informacion {
+  display: block;
+}
+
+/* Estilos para la sección del cuerpo de la pagina */
+
+.Cuerpo {
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 5rem 1rem;
+  background-image: url(img/categoria-figuras.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 37vh;
+  margin: 0;
+}
+
+.Cuerpo h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 
+    -1px -1px 0 rgb(173, 173, 173),  
+     1px -1px 0 rgb(173, 173, 173),
+    -1px  1px 0 rgb(173, 173, 173),
+     1px  1px 0 rgb(173, 173, 173);
+}
+
+.Cuerpo p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  ;
+  text-shadow: 
+    -1px -1px 0 rgb(173, 173, 173),  
+     1px -1px 0 rgb(173, 173, 173),
+    -1px  1px 0 rgb(173, 173, 173),
+     1px  1px 0 rgb(173, 173, 173);
+  
+}
+
+.Cuerpo .Boton {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  color: #ffffff;
+  background-color: transparent;
+  border: 2px solid #f6f2f2;
+  
+}
+
+.Cuerpo .Boton:hover {
+  background-color: rgb(173, 173, 173);
+  color: white;
+}
+
+.Galeria {
+  text-align: center;
+  padding: 3rem 1rem;
+
+  background-color: rgba(244, 237, 237, 0.525);
+}
+
+.Galeria h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.Galeria p {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.Imagenes {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.Imagenes img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.Imagenes img:hover {
+  transform: scale(1.05);
+}
